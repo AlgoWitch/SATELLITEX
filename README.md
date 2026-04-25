@@ -1,4 +1,4 @@
-````markdown
+
 # Satellite Intelligence Platform
 
 ## Overview
@@ -93,6 +93,7 @@ Interactive frontend connected to a Flask backend API.
 
 ---
 
+
 ## System Architecture
 
 ```text
@@ -150,14 +151,14 @@ README.md
 
 ## Workflow
 
-1. User uploads the **Before** satellite image.
-2. User uploads the **After** satellite image.
-3. Backend reads raster data.
-4. Features are extracted from image bands.
-5. Trained model predicts terrain classes.
-6. Percentage changes are computed.
-7. Maps and charts are generated.
-8. Dashboard displays final intelligence output.
+1. User uploads the Before satellite image
+2. User uploads the After satellite image
+3. Backend reads raster data
+4. Features are extracted from image bands
+5. Trained model predicts terrain classes
+6. Percentage changes are computed
+7. Maps and charts are generated
+8. Dashboard displays final intelligence output
 
 ---
 
