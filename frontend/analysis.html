@@ -6,6 +6,11 @@
 <title>Mission Analysis Console</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Backend URL - same origin since we serve frontend from backend
+    const BACKEND_URL = window.location.origin;
+    console.log('Backend URL:', BACKEND_URL);
+</script>
 </head>
 
 <body>
@@ -194,7 +199,7 @@ async function runAnalysis(){
     try{
 
         const response=await fetch(
-            "https://satellite-backend.onrender.com/analyze",
+            `${BACKEND_URL}/analyze`,
             {
                 method:"POST",
                 body:formData
@@ -234,13 +239,13 @@ async function runAnalysis(){
         const t=Date.now();
 
         document.getElementById("beforeMap").src=
-            "../outputs/custom_before_map.png?"+t;
+            "/outputs/custom_before_map.png?"+t;
 
         document.getElementById("afterMap").src=
-            "../outputs/custom_after_map.png?"+t;
+            "/outputs/custom_after_map.png?"+t;
 
         document.getElementById("changeMap").src=
-            "../outputs/custom_change_map.png?"+t;
+            "/outputs/custom_change_map.png?"+t;
 
         drawChart(veg,land,water);
 
