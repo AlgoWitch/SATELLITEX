@@ -17,14 +17,17 @@ os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
 
-# Configure CORS to allow cross-origin requests
-cors_config = {
-    "origins": "*",  # Allow all origins
-    "methods": ["GET", "POST", "OPTIONS"],
-    "allow_headers": ["Content-Type"],
-    "supports_credentials": True
-}
-CORS(app, resources={r"/*": cors_config})
+# Configure CORS
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+# Ensure CORS headers are always sent
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Max-Age', '3600')
+    return response
 
 # Error handler for all exceptions
 @app.errorhandler(Exception)
